@@ -1,0 +1,75 @@
+<div class="container p-3 my-3 bg-dark text-white" *ngIf="cambio === false">
+    <div class="container-md">
+        <h1>CATEGORIAS </h1>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>ID de la Categoria</label>
+                <input class="form-control" [(ngModel)]="categoria._id">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Nombre de la categoria</label>
+                <input class="form-control" [(ngModel)]="categoria.descripcion">
+            </div>
+            <div class="form-group col-md-5">
+                <label>Id del usuario que registra</label>
+                <input class="form-control" [(ngModel)]="categoria.usuario">
+            </div>
+        </div>
+        <br>
+        <button (click)="altaCategoria()" class="btn btn-success">Registrar</button>
+    </div>
+</div>
+<div class="container p-3 my-3 bg-dark text-white" *ngIf="cambio === true">
+    <div class="container-md">
+        <h1> MODIFICAR CATEGORIAS </h1>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>ID de la Categoria</label>
+                <input class="form-control" [(ngModel)]="categoria._id">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Nombre de la categoria</label>
+                <input class="form-control" [(ngModel)]="categoria.descripcion">
+            </div>
+            <div class="form-group col-md-5">
+                <label>Id del usuario que registra </label>
+                <input class="form-control" [(ngModel)]="categoria.usuario['_id']">
+            </div>
+        </div>
+        <br>
+        <button (click)="modificarCategoria()" class="btn btn-success">Modificar</button>
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID Categoria</th>
+                        <th>Nombre</th>
+                        <th>ID usuario</th>
+                        <th>Nombre de usuario</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let categoria of categorias">
+                        <td class="">{{categoria._id}}</td>
+                        <td class="">{{categoria.descripcion}}</td>
+                        <td class="">{{categoria.usuario._id}}</td>
+                        <td class="">{{categoria.usuario.nombre}}</td>
+                        <td class=""><button class="btn btn-danger" (click)="eliminarCategoria(categoria._id)">Borrar</button></td>
+                        <td class=""><button class="btn btn-warning" (click)="seleccionCategoria(categoria._id)">Modificar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

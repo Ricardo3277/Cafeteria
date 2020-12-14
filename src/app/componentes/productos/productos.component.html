@@ -1,0 +1,91 @@
+<div class="container p-3 my-3 bg-dark text-white" *ngIf="cambio === false">
+    <div class="container-md">
+        <h1>PRODUCTOS </h1>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>ID del Producto</label>
+                <input class="form-control" [(ngModel)]="producto._id">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Nombre Del producto</label>
+                <input class="form-control" [(ngModel)]="producto.nombre">
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Precio uitario</label>
+                <input class="form-control" [(ngModel)]="producto.preciouni">
+            </div>
+            <div class="form-group col-md-5">
+                <label>Id de la categoria a la que pertenece</label>
+                <input class="form-control" [(ngModel)]="producto.categoria">
+            </div>
+        </div>
+        <br>
+        <button (click)="altaProducto()" class="btn btn-success">Registrar</button>
+
+    </div>
+</div>
+<div class="container p-3 my-3 bg-dark text-white" *ngIf="cambio === true">
+    <div class="container-md">
+        <h1>Actualizacion de Productos </h1>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>ID del Producto</label>
+                <input class="form-control" [(ngModel)]="producto._id">
+            </div>
+            <div class="form-group col-md-6">
+                <label>Nombre Del producto</label>
+                <input class="form-control" [(ngModel)]="producto.nombre">
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label>Precio uitario</label>
+                <input class="form-control" [(ngModel)]="producto.preciouni">
+            </div>
+            <div class="form-group col-md-5">
+                <label>Id de la categoria a la que pertenece</label>
+                <input class="form-control" [(ngModel)]="producto.categoria['_id']">
+            </div>
+        </div>
+        <br>
+        <button (click)="modificarProducto()" class="btn btn-success">Modificar</button>
+
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Precio Unitario</th>
+                        <th>ID Categoria</th>
+                        <th>Categoria</th>
+                        <th>ID usuario que registra</th>
+                        <th>Estado</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos">
+                        <td class="">{{producto._id}}</td>
+                        <td class="">{{producto.nombre}}</td>
+                        <td class="">{{producto.preciouni}}</td>
+                        <td class="">{{producto.categoria._id}}</td>
+                        <td class="">{{producto.categoria.descripcion}}</td>
+                        <td class="">{{producto.categoria.usuario}}</td>
+                        <td class=""> {{producto.estado}}</td>
+                        <td class=""><button class="btn btn-danger" (click)="eliminarProducto(producto._id)">Borrar</button></td>
+                        <td class=""><button class="btn btn-warning" (click)="seleccionar(producto._id)">Modificar</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
